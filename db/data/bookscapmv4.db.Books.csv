@@ -1,0 +1,11 @@
+ID,title,author,price,publishedDate,gender,ageGroup
+e0a3b218-4f81-4b72-91d5-8fbc31a29331,The Very Hungry Caterpillar,Eric Carle,10.99,1969-06-03T00:00:00Z,M,KIDS
+1d897f26-0e31-419a-a82f-85b9d311904a,To Kill a Mockingbird,Harper Lee,14.99,1960-07-11T00:00:00Z,F,ADULT
+5a9c1e40-27f9-4621-b328-3e4b77d61245,Where the Wild Things Are,Maurice Sendak,8.95,1963-04-09T00:00:00Z,M,KIDS
+9b3c4f72-6a10-482d-8e9f-11d2345e6789,Pride and Prejudice,Jane Austen,12.50,1813-01-28T00:00:00Z,F,ADULT
+3f12a84b-9e81-432d-a120-7f6d54238e10,The Cat in the Hat,Dr. Seuss,9.99,1957-03-12T00:00:00Z,M,KIDS
+a7d8c6b2-e1f4-4a09-9012-3b4c5d6e7f80,1984,George Orwell,15.00,1949-06-08T00:00:00Z,M,ADULT
+6c0e812d-3d4f-4a60-b89e-2143f56789a1,Charlotte's Web,E.B. White,7.99,1952-10-15T00:00:00Z,M,KIDS
+b4e5f607-1a2b-3c4d-8e9f-0123456789bc,The Great Gatsby,F. Scott Fitzgerald,11.25,1925-04-10T00:00:00Z,M,ADULT
+7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d,Matilda,Roald Dahl,8.50,1988-10-01T00:00:00Z,M,KIDS
+4d3c2b1a-0f9e-8d7c-6b5a-4f3e2d1c0b9a,Becoming,Michelle Obama,18.99,2018-11-13T00:00:00Z,F,ADULT
