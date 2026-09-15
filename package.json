@@ -2,13 +2,36 @@
   "name": "bookscapmodatav4",
   "version": "1.0.0",
   "dependencies": {
-    "@sap/cds": "^9"
+    "@cap-js/hana": "^3",
+    "@sap/cds": "^10",
+    "@sap/xssec": "^4.15.0"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^2.4"
+    "@cap-js/sqlite": "^3",
+    "@sap/cds-dk": "^10",
+    "cds-plugin-ui5": "^0.17.0",
+    "mbt": "^1.2.49",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-bookscapmv4listreport": "cds watch --open bookscapmv4listreport/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "undeploy": "cf undeploy bookscapmodatav4 --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
-  "private": true
+  "private": true,
+  "cds": {
+    "requires": {
+      "[production]": {
+        "db": "hana"
+      }
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/bookscapmv4listreport"
+  ]
 }
