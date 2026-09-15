@@ -6,7 +6,7 @@ entity GenderVH {
 }
 
 entity AgeGroupVH {
-    key code : String(1);
+    key code : String(10);
     text : String;
 }
 
@@ -28,4 +28,14 @@ entity Books {
     publishedDate : DateTime;
     gender        : AllGender;
     ageGroup      : BooksAgeGroup;
+
+    chapters      : Composition of many Chapters on chapters.books = $self;
+}
+
+entity Chapters {
+    key ID : UUID;
+    title  : String;
+    pages  : Integer;
+
+    books  : Association to Books;
 }

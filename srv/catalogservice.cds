@@ -6,6 +6,8 @@ service BooksLibSrv @(path: '/odata/v4/bookssrv') {
 
     entity GenderVH   as projection on b.GenderVH;
     entity AgeGroupVH as projection on b.AgeGroupVH;
+
+    entity ChaptersSet as projection on b.Chapters;
 }
 
 annotate BooksLibSrv.BooksSet with @(UI: {
