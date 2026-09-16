@@ -1,8 +1,6 @@
-<mvc:View controllerName="bookscapmfreestyleui5.controller.BookSetView"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+<mvc:View controllerName="bookscapmfreestyleui5.controller.BookSetView" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
 	<Page id="page" title="{i18n>title}">
-		<Table id="idBooksTable" items="{book>/BooksSet}">
+		<Table id="idBooksTable" items="{book>/BooksSet}" mode="SingleSelectLeft" selectionChange="_showChapters">
 			<columns>
 				<Column>
 					<Text text="Title"/>
@@ -32,6 +30,31 @@
 						<Text text="{book>publishedDate}"/>
 						<Text text="{book>gender}"/>
 						<Text text="{book>ageGroup}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table id="idChaptersTable" items="{ch>/}">
+			<headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<Title text="Chapters" level="H2"/>
+					</content>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<Text text="Title"/>
+				</Column>
+				<Column>
+					<Text text="Pages"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{ch>title}"/>
+						<Text text="{ch>pages}"/>
 					</cells>
 				</ColumnListItem>
 			</items>
