@@ -2,7 +2,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
 	<Page id="page" title="{i18n>title}">
-		<Table id="idBooksTable" items="{/BooksSet}">
+		<Table id="idBooksTable" items="{book>/BooksSet}">
 			<columns>
 				<Column>
 					<Text text="Title"/>
@@ -26,12 +26,12 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{title}"/>
-						<Text text="{author}"/>
-						<Text text="{price}"/>
-						<Text text="{publishedDate}"/>
-						<Text text="{gender}"/>
-						<Text text="{ageGroup}"/>
+						<Text text="{book>title}"/>
+						<Text text="{book>author}"/>
+						<Text text="{book>price}"/>
+						<Text text="{book>publishedDate}"/>
+						<Text text="{book>gender}"/>
+						<Text text="{book>ageGroup}"/>
 					</cells>
 				</ColumnListItem>
 			</items>
