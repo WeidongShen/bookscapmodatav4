@@ -18,7 +18,8 @@
     "watch-bookscapmv4listreport": "cds watch --open bookscapmv4listreport/index.html?sap-ui-xx-viewCache=false --livereload false",
     "undeploy": "cf undeploy bookscapmodatav4 --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-bookscapmfreestyleui5": "cds watch --open bookscapmfreestyleui5/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {

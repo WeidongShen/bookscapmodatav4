@@ -1,0 +1,135 @@
+{
+  "_version": "1.89.0",
+  "sap.app": {
+    "id": "bookscapmfreestyleui5",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.32.0",
+      "toolsId": "0eceb15b-6f9e-4bab-af1f-8b4d33a1eb6b"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/bookssrv/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "semobj_freestyle-display": {
+          "semanticObject": "semobj_freestyle",
+          "action": "display",
+          "title": "{{semobj_freestyle-display.flpTitle}}",
+          "subTitle": "{{semobj_freestyle-display.flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.152.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "bookscapmfreestyleui5.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "bookscapmfreestyleui5.view",
+        "async": true,
+        "viewPath": "bookscapmfreestyleui5.view"
+      },
+      "routes": [
+        {
+          "name": "RouteBookSetView",
+          "pattern": ":?query:",
+          "target": [
+            "TargetBookSetView"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetBookSetView": {
+          "id": "BookSetView",
+          "name": "BookSetView"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "bookscapmfreestyleui5.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "bookscapmodatav4approuter"
+  }
+}

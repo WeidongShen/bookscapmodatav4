@@ -69,9 +69,23 @@ modules:
       - bookscapmv4listreport.zip
       name: bookscapmv4listreport
       target-path: resources/
+    - artifacts:
+      - bookscapmfreestyleui5.zip
+      name: bookscapmfreestyleui5
+      target-path: resources/
 - name: bookscapmv4listreport
   type: html5
   path: app/bookscapmv4listreport
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: bookscapmfreestyleui5
+  type: html5
+  path: app/bookscapmfreestyleui5
   build-parameters:
     build-result: dist
     builder: custom

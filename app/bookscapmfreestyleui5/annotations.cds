@@ -1,0 +1,1 @@
+using BooksLibSrv as service from '../../srv/catalogservice';

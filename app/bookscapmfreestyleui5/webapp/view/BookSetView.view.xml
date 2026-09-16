@@ -1,0 +1,40 @@
+<mvc:View controllerName="bookscapmfreestyleui5.controller.BookSetView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+	<Page id="page" title="{i18n>title}">
+		<Table id="idBooksTable" items="{/BooksSet}">
+			<columns>
+				<Column>
+					<Text text="Title"/>
+				</Column>
+				<Column>
+					<Text text="Author"/>
+				</Column>
+				<Column>
+					<Text text="Price"/>
+				</Column>
+				<Column>
+					<Text text="Date of Publication"/>
+				</Column>
+				<Column>
+					<Text text="Author Gender"/>
+				</Column>
+				<Column>
+					<Text text="Book Suitable for"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{title}"/>
+						<Text text="{author}"/>
+						<Text text="{price}"/>
+						<Text text="{publishedDate}"/>
+						<Text text="{gender}"/>
+						<Text text="{ageGroup}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
+</mvc:View>
