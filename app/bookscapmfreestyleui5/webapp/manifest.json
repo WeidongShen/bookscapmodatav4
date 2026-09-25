@@ -112,12 +112,23 @@
           "target": [
             "TargetBookSetView"
           ]
+        },
+        {
+          "name": "RouteBookChaptersView",
+          "pattern": "{ID}",
+          "target": [
+            "TargetBookChaptersView"
+          ]
         }
       ],
       "targets": {
         "TargetBookSetView": {
           "id": "BookSetView",
           "name": "BookSetView"
+        },
+        "TargetBookChaptersView": {
+          "id": "BookChaptersView",
+          "name": "BookChaptersView"
         }
       }
     },

@@ -34,6 +34,12 @@ sap.ui.define([
             var aChapters = (oObj && oObj.chapters) ? oObj.chapters : [];
 
             this.getView().setModel(new sap.ui.model.json.JSONModel(aChapters), 'ch');
+        },
+
+        onItemPress(oEvent) {
+            const oCtx = oEvent.getSource().getBindingContext('book');
+            const oObj = oCtx.getObject();
+            this.getOwnerComponent().getRouter().navTo('RouteBookChaptersView', {ID : oObj.ID});
         }
     });
 });

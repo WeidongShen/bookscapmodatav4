@@ -1,0 +1,21 @@
+<mvc:View
+    controllerName="bookscapmfreestyleui5.controller.BookChaptersView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Page
+        id="bookchapterspage"
+        title="Chapters"
+    >
+        <List
+            headerText="Chapters"
+            headerLevel="H2"
+            items="{path:'chapters'}"
+        >
+            <StandardListItem
+                title="{title}"
+                counter="{pages}"
+            />
+        </List>
+    </Page>
+</mvc:View>

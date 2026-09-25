@@ -1,5 +1,5 @@
 <mvc:View controllerName="bookscapmfreestyleui5.controller.BookSetView" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
-	<Page id="page" title="{i18n>title}">
+	<Page id="booksetpage" title="{i18n>title}">
 		<Table id="idBooksTable" items="{book>/BooksSet}" mode="SingleSelectLeft" selectionChange="_showChapters">
 			<columns>
 				<Column>
@@ -22,7 +22,7 @@
 				</Column>
 			</columns>
 			<items>
-				<ColumnListItem>
+				<ColumnListItem type="Navigation" press="onItemPress">
 					<cells>
 						<Text text="{book>title}"/>
 						<Text text="{book>author}"/>
