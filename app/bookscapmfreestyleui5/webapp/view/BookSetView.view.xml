@@ -11,6 +11,10 @@
             text="Create New Record"
             press="onCreateNewRecord"
         />
+        <Button
+            text="Update Selected Record"
+            press="onUpdateSelectedRecord"
+        />
         <Table
             id="idBooksTable"
             items="{book>/BooksSet}"
