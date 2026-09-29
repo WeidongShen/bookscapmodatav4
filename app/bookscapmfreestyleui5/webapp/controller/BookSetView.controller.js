@@ -82,7 +82,7 @@ sap.ui.define([
 
             // Send to backend (Patch)
             await oModel.submitBatch(sGroupId)
-                .then(x => sap.m.MessagToast.show('Updated'))
+                .then(x => sap.m.MessageToast.show('Updated'))
                 .catch(err => sap.m.MessageBox.error(err.message || 'Update Failed'));
         }
     });
