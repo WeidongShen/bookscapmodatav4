@@ -40,6 +40,28 @@ sap.ui.define([
             const oCtx = oEvent.getSource().getBindingContext('book');
             const oObj = oCtx.getObject();
             this.getOwnerComponent().getRouter().navTo('RouteBookChaptersView', {ID : oObj.ID});
+        },
+
+        async onCreateNewRecord(oEvent) {
+            var oModel = this.getView().getModel('book');
+            var sGroupId = 'bookcud';
+            var oPayload = {
+                "title" : "Rich Dad Poor Dad",
+                "autor" : "Robert Kiyosaki",
+                "price" : 2,
+                "publishedDate" : "2026-01-10T10:30:00Z",
+                "gender" : "M",
+                "ageGroup" : "Adult"
+            };
+            var oItemsBinding = this.byId('idBooksTable').getBinding('items');
+            oItemsBinding.create(oPayload);
+            await oModel.submitBatch(sGroupId)
+            .then( x => {
+                oItemsBinding.refresh();  // optional in V4
+            })
+            .catch(err => {
+                sap.m.MessageBox.error(err.message || 'Create Failed');
+            });
         }
     });
 });
