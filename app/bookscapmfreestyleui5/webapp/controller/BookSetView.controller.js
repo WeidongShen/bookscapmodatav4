@@ -47,7 +47,7 @@ sap.ui.define([
             var sGroupId = 'bookcud';
             var oPayload = {
                 "title": "Rich Dad Poor Dad",
-                "autor": "Robert Kiyosaki",
+                "author": "Robert Kiyosaki",
                 "price": 2,
                 "publishedDate": "2026-01-10T10:30:00Z",
                 "gender": "M",
