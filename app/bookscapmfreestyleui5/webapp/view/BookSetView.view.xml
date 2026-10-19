@@ -15,6 +15,10 @@
             text="Update Selected Record"
             press="onUpdateSelectedRecord"
         />
+        <Button
+            text="Delete Selected Record"
+            press="onDeleteSelectedRecord"
+        />
         <Table
             id="idBooksTable"
             items="{book>/BooksSet}"

@@ -1,6 +1,7 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageBox"
+], (Controller, MessageBox) => {
     "use strict";
 
     return Controller.extend("bookscapmfreestyleui5.controller.BookSetView", {
@@ -75,7 +76,7 @@ sap.ui.define([
                 return;
             }
 
-            var oCtx = oItem.getBindingContext('book');  // oEq5q V4 context
+            var oCtx = oItem.getBindingContext('book');  // oData V4 context
             // Change some properties
             oCtx.setProperty('price', 10000);
             oCtx.setProperty('title', '----- New Title -----');
@@ -84,6 +85,35 @@ sap.ui.define([
             await oModel.submitBatch(sGroupId)
                 .then(x => sap.m.MessageToast.show('Updated'))
                 .catch(err => sap.m.MessageBox.error(err.message || 'Update Failed'));
+        },
+
+        // Event handler for deleting an existing record
+        onDeleteSelectedRecord(oEvent) {
+            var oModel = this.getView().getModel('book');
+            var sGroupId = 'bookcud';
+            var oTable = this.byId('idBooksTable');
+            var oItem = oTable.getSelectedItem();
+
+            if (!oItem) {
+                sap.m.MessageToast.show('Select a book first');
+                return;
+            }
+
+             var oCtx = oItem.getBindingContext('book');  // oData V4 context
+
+             MessageBox.confirm("Delete selected book?", {
+                actions : [sap.m.MessageBox.Action.DELETE, sap.m.MessageBox.Action.CANCEL],
+                emphasizedAction : sap.m.MessageBox.Action.DELETE,
+                onClose : async (sAction) => {
+                    if (sAction !== sap.m.MessageBox.Action.DELETE) return;
+
+                    await oCtx.delete(sGroupId)
+                    .then(function() {
+                        sap.m.MessageToast.show('Record deleted');
+                    })
+                    .catch(err => sap.m.MessageBox.error(err.message || 'Delete Failed'));
+                }
+             })
         }
     });
 });
