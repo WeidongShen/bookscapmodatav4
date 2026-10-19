@@ -19,6 +19,10 @@
             text="Delete Selected Record"
             press="onDeleteSelectedRecord"
         />
+        <Button
+            text="Batch Update"
+            press="onBatchUpdate"
+        />
         <Table
             id="idBooksTable"
             items="{book>/BooksSet}"

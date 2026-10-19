@@ -114,6 +114,39 @@ sap.ui.define([
                     .catch(err => sap.m.MessageBox.error(err.message || 'Delete Failed'));
                 }
              })
+        },
+
+        async onBatchUpdate() {
+            var oModel = this.getView().getModel('book');
+            var sGroupId = 'bookcud';
+            var oPayload1 = {
+                "title": "Book 1",
+                "author": "Author 1",
+                "price": 2,
+                "publishedDate": "2026-01-10T10:30:00Z",
+                "gender": "M",
+                "ageGroup": "Adult"
+            };
+            var oPayload2 = {
+                "title": "Book 2",
+                "author": "Author 2",
+                "price": 2,
+                "publishedDate": "2026-01-10T10:30:00Z",
+                "gender": "M",
+                "ageGroup": "Adult"
+            };
+            var oItemsBinding = this.byId('idBooksTable').getBinding('items');
+
+            oItemsBinding.create(oPayload1, {groupId : sGroupId});
+            oItemsBinding.create(oPayload2, {groupId : sGroupId});
+
+            await oModel.submitBatch(sGroupId)
+                .then(x => {
+                    sap.m.MessageToast.show('Batch Updated');
+                })
+                .catch(err => {
+                    sap.m.MessageBox.error(err.message || 'Batch Update Failed');
+                });
         }
     });
 });
