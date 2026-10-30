@@ -20,6 +20,7 @@ sap.ui.define([
             var oSorter = new sap.ui.model.Sorter('price', true);
             oBinding.sort(oSorter);
         },
+
         // Event handler for show chapters
         async _showChapters(oEvent) {
             var oModel = this.getView().getModel('book');
@@ -42,6 +43,7 @@ sap.ui.define([
             const oObj = oCtx.getObject();
             this.getOwnerComponent().getRouter().navTo('RouteBookChaptersView', { ID: oObj.ID });
         },
+
         // Event handler for creating a new record
         async onCreateNewRecord(oEvent) {
             var oModel = this.getView().getModel('book');
@@ -64,6 +66,7 @@ sap.ui.define([
                     sap.m.MessageBox.error(err.message || 'Create Failed');
                 });
         },
+        
         // Event handler for updating an existing record
         async onUpdateSelectedRecord(oEvent) {
             var oModel = this.getView().getModel('book');
@@ -169,7 +172,38 @@ sap.ui.define([
             this.oCreateDialog.open();
         },
 
-        onSaveBook() { },
+        async onSaveBook() {
+            const oDataModel = this.getView().getModel('book');
+            const oCreateModel = this.getView().getModel('create');
+            const oPayload = structuredClone(oCreateModel.getProperty('/newBook'));
+
+            // Basic validation
+            if (!oPayload.title || !oPayload.author) {
+                sap.m.MessageBox.warning('Title and autor are required');
+                return;
+            }
+
+            const sGroupId = 'bookcud';
+
+            try {
+                const oListBinding = oDataModel.bindList('/BooksSet');
+                const oContext = oListBinding.create(oPayload, { groupId: sGroupId });
+
+                await oDataModel.submitBatch(sGroupId)
+                    .then(x => {
+                        sap.m.MessageToast.show('Book created successfully.');
+                        this.oCreateDialog.close();
+                        oCreateModel.setProperty("/newBook", { title: '', author: '', price: null, publishedDate: null });
+                        this.byId('idBooksTable').getBinding('items').refresh();
+                    })
+                    .catch(err => {
+                        sap.m.MessageBox.error(error?.message || 'Creation Failed');
+                    });
+
+            } catch (error) {
+                sap.m.MessageBox.error(error?.message || 'Creation Failed');
+            }
+        },
 
         onCancelCreate() {
             this.oCreateDialog.close();
