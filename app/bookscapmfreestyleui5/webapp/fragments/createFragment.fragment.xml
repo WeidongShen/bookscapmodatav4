@@ -1,0 +1,56 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+>
+   <Dialog
+      id="idCreateBookDialog"
+      title="Create Book"
+      class="sapUiContentPadding"
+   >
+      <VBox width="100%">
+         <Label text="Title" />
+         <Input
+            value="{create>/newBook/title}"
+            required="true"
+         />
+         <Label
+            text="Author"
+            class="sapUiSmallMarginTop"
+         />
+         <Input
+            value="{create>/newBook/author}"
+            required="true"
+         />
+         <Label
+            text="Price"
+            class="sapUiSmallMarginTop"
+         />
+         <Input
+            value="{create>/newBook/price}"
+            required="true"
+         />
+         <Label
+            text="Published Date"
+            class="sapUiSmallMarginTop"
+         />
+         <DatePicker
+            value="{create>/newBook/publishedDate}"
+            valueFormat="yyyy-MM-dd"
+            displayFormat="yyyy-MM-dd"
+         />
+      </VBox>
+      <beginButton>
+         <Button
+            text="Save"
+            type="Emphasized"
+            press="onSaveBook"
+         />
+      </beginButton>
+      <endButton>
+         <Button
+            text="Cancel"
+            press="onCancelCreate"
+         />
+      </endButton>
+   </Dialog>
+</core:FragmentDefinition>

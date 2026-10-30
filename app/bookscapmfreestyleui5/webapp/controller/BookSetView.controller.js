@@ -99,21 +99,21 @@ sap.ui.define([
                 return;
             }
 
-             var oCtx = oItem.getBindingContext('book');  // oData V4 context
+            var oCtx = oItem.getBindingContext('book');  // oData V4 context
 
-             MessageBox.confirm("Delete selected book?", {
-                actions : [sap.m.MessageBox.Action.DELETE, sap.m.MessageBox.Action.CANCEL],
-                emphasizedAction : sap.m.MessageBox.Action.DELETE,
-                onClose : async (sAction) => {
+            MessageBox.confirm("Delete selected book?", {
+                actions: [sap.m.MessageBox.Action.DELETE, sap.m.MessageBox.Action.CANCEL],
+                emphasizedAction: sap.m.MessageBox.Action.DELETE,
+                onClose: async (sAction) => {
                     if (sAction !== sap.m.MessageBox.Action.DELETE) return;
 
                     await oCtx.delete(sGroupId)
-                    .then(function() {
-                        sap.m.MessageToast.show('Record deleted');
-                    })
-                    .catch(err => sap.m.MessageBox.error(err.message || 'Delete Failed'));
+                        .then(function () {
+                            sap.m.MessageToast.show('Record deleted');
+                        })
+                        .catch(err => sap.m.MessageBox.error(err.message || 'Delete Failed'));
                 }
-             })
+            })
         },
 
         async onBatchUpdate() {
@@ -137,8 +137,8 @@ sap.ui.define([
             };
             var oItemsBinding = this.byId('idBooksTable').getBinding('items');
 
-            oItemsBinding.create(oPayload1, {groupId : sGroupId});
-            oItemsBinding.create(oPayload2, {groupId : sGroupId});
+            oItemsBinding.create(oPayload1, { groupId: sGroupId });
+            oItemsBinding.create(oPayload2, { groupId: sGroupId });
 
             await oModel.submitBatch(sGroupId)
                 .then(x => {
@@ -147,6 +147,32 @@ sap.ui.define([
                 .catch(err => {
                     sap.m.MessageBox.error(err.message || 'Batch Update Failed');
                 });
+        },
+
+        async onCreateFragment() {
+            if (!this.oCreateDialog) {
+                this.oCreateDialog = await this.loadFragment({
+                    name: 'bookscapmfreestyleui5.fragments.createFragment'
+                });
+                this.getView().addDependent(this.oCreateDialog);
+            }
+            const oCreateModel = new sap.ui.model.json.JSONModel({
+                newBook: {
+                    title: '',
+                    author: '',
+                    price: null,
+                    publishedDate: null
+                }
+            });
+            this.getView().setModel(oCreateModel, 'create');
+
+            this.oCreateDialog.open();
+        },
+
+        onSaveBook() { },
+
+        onCancelCreate() {
+            this.oCreateDialog.close();
         }
     });
 });

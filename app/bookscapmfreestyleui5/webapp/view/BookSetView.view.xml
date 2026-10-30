@@ -7,22 +7,32 @@
         id="booksetpage"
         title="{i18n>title}"
     >
-        <Button
-            text="Create New Record"
-            press="onCreateNewRecord"
-        />
-        <Button
-            text="Update Selected Record"
-            press="onUpdateSelectedRecord"
-        />
-        <Button
-            text="Delete Selected Record"
-            press="onDeleteSelectedRecord"
-        />
-        <Button
-            text="Batch Update"
-            press="onBatchUpdate"
-        />
+        <VBox>
+            <HBox>
+                <Button
+                    text="Create New Record"
+                    press="onCreateNewRecord"
+                />
+                <Button
+                    text="Update Selected Record"
+                    press="onUpdateSelectedRecord"
+                />
+                <Button
+                    text="Delete Selected Record"
+                    press="onDeleteSelectedRecord"
+                />
+                <Button
+                    text="Batch Update"
+                    press="onBatchUpdate"
+                />
+            </HBox>
+            <HBox>
+                <Button
+                    text="Create with a Fragment"
+                    press="onCreateFragment"
+                />
+            </HBox>
+        </VBox>
         <Table
             id="idBooksTable"
             items="{book>/BooksSet}"
